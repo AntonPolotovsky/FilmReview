@@ -25,27 +25,17 @@ import javax.inject.Inject
 class FilmActivityViewModel @Inject constructor(
     private val interactor: FilmPageInteractor
 
-): ViewModel() {
+) : ViewModel() {
 
 
     private val _moviesLiveData = MutableLiveData<Result>()
-    //val allMoviesLiveData: LiveData<Result> get() = _moviesLiveData
 
 
+    fun getMovies(): Flow<PagingData<Result>> {
 
-   // @SuppressLint("CheckResult")
-   fun getMovies(): Flow<PagingData<Result>> {
 
-//        val response = interactor.getMovies().cachedIn(viewModelScope)
-//        _moviesLiveData.value = response
-//        return response
         return interactor.getMovies()
-//            .map {pagingData ->
-//                pagingData.map {
-//                    _moviesLiveData.value = it
-//                }
-//
-//            }
+
             .onEach { it ->
                 it.map {
                     _moviesLiveData.value = it

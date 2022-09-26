@@ -21,14 +21,12 @@ import kotlinx.coroutines.launch
 class FilmActivity : AppCompatActivity() {
 
 
-
     private var _binding: ActivityFilmBinding? = null
-    private val binding:ActivityFilmBinding
+    private val binding: ActivityFilmBinding
         get() = _binding!!
 
     private val viewModel: FilmActivityViewModel by viewModels()
     private var adapter: FilmActivityAdapter? = null
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,15 +38,15 @@ class FilmActivity : AppCompatActivity() {
 
     }
 
-    private fun initAdapter(){
+    private fun initAdapter() {
         adapter = FilmActivityAdapter(this)
         binding.recyclerView.adapter = adapter
     }
 
-    private fun collectStateUi(){
-        lifecycleScope.launch{
+    private fun collectStateUi() {
+        lifecycleScope.launch {
             viewModel.getMovies()
-             .collectLatest {Result->
+                .collectLatest { Result ->
                     adapter?.submitData(lifecycle, Result)
                 }
         }

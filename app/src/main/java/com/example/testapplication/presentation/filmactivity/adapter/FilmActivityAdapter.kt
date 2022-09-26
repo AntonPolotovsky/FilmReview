@@ -17,14 +17,14 @@ import com.example.testapplication.databinding.ItemDescriptionLayoutBinding
 import com.example.testapplication.network.remotedatasource.data.Result
 
 class FilmActivityAdapter(
-    private val context:Context
+    private val context: Context
 ) : PagingDataAdapter<Result, FilmActivityAdapter.MovieViewHolder>(MovieDiffCallBack()) {
 
 
-
-    class MovieViewHolder(val binding: ItemDescriptionLayoutBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MovieViewHolder(val binding: ItemDescriptionLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         var movieTitle: TextView = binding.title
-        var movieDescription: TextView =binding.description
+        var movieDescription: TextView = binding.description
         var movieImage: ImageView = binding.image
 
     }
@@ -35,7 +35,7 @@ class FilmActivityAdapter(
     ): MovieViewHolder {
         return MovieViewHolder(
             ItemDescriptionLayoutBinding.inflate(
-                LayoutInflater.from(parent.context),parent,false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }
@@ -55,10 +55,10 @@ class FilmActivityAdapter(
 
     }
 
-    class MovieDiffCallBack : DiffUtil.ItemCallback<Result>(){
+    class MovieDiffCallBack : DiffUtil.ItemCallback<Result>() {
         override fun areItemsTheSame(oldItem: Result, newItem: Result): Boolean {
             //return  oldItem.headline == newItem.headline
-            return  oldItem.summary_short == newItem.summary_short
+            return oldItem.summary_short == newItem.summary_short
         }
 
         override fun areContentsTheSame(oldItem: Result, newItem: Result): Boolean {

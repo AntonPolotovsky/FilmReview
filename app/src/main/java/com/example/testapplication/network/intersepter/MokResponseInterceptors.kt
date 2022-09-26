@@ -7,7 +7,7 @@ import java.io.IOException
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
-class MokResponseInterceptors() :Interceptor {
+class MokResponseInterceptors() : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -61,4 +61,4 @@ class MokResponseInterceptors() :Interceptor {
     }
 
 
-    }
+}

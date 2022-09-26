@@ -17,7 +17,7 @@ class RetrofitFactory @Inject constructor(
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
-    fun getApiInterface() : AppApi {
+    fun getApiInterface(): AppApi {
         return Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/")
             .client(client)

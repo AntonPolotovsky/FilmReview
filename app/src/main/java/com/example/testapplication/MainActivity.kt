@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         goToMain()
     }
+
     private fun goToMain() {
         Handler().postDelayed({
             val intent = Intent(this@MainActivity, FilmActivity::class.java)
@@ -32,18 +33,5 @@ class MainActivity : AppCompatActivity() {
         }, 3300)
         startActivity(intent)
     }
-//        binding.filmImage.alpha = 0f
-//        binding.animate().setDuration(1500).alpha(1f).withEndAction {
-//            val intent = Intent(this, FilmActivity::class.java)
-//            startActivity(intent)
-//            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-//            finish()
-//        }
 
-
-//        binding.filmImage.setOnClickListener {
-//            val intent = Intent(this, FilmActivity::class.java)
-//            startActivity(intent)
-//        }
-    }
-//}
+}

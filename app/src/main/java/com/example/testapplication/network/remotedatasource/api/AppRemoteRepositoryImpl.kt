@@ -15,22 +15,22 @@ class AppRemoteRepositoryImpl @Inject constructor(
     private val appApi: AppApi
 ) : AppRemoteRepository {
 
-     override fun getMovies(): Flow<PagingData<Result>> {
+    override fun getMovies(): Flow<PagingData<Result>> {
 
         return Pager(
-                config = PagingConfig(
-                    pageSize = NETWORK_PAGE_SIZE, // количестко отображаемых лементов на странице
-        /*!!!!!*///            pageSize = 5,
-                    enablePlaceholders = false,
-     /*??????*/               initialLoadSize = 6,// первоначально апрашивает с сервера при первоначальной загрузке
-                    prefetchDistance = 2,  // использует этот параметр, чтобы определить, когда надо подгружать следующую порцию данных. По умолчанию этот параметр равен pageSize. Можно задать свое значение.
-          //      maxSize = 20
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE, // количестко отображаемых лементов на странице
 
-                ),
-                pagingSourceFactory = {
-                    MoviesSource(appApi = appApi)
-                }
-            ).flow
+                enablePlaceholders = false,
+                initialLoadSize = 6,
+                prefetchDistance = 2
+
+
+            ),
+            pagingSourceFactory = {
+                MoviesSource(appApi = appApi)
+            }
+        ).flow
             .flowOn(Dispatchers.IO)
 
     }

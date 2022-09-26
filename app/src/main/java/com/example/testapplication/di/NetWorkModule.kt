@@ -16,14 +16,13 @@ import okhttp3.logging.HttpLoggingInterceptor
 class NetWorkModule {
 
 
-
     @Provides
-    fun provideHttpLoggingInterceptors():HttpLoggingInterceptor{
+    fun provideHttpLoggingInterceptors(): HttpLoggingInterceptor {
         return InterceptorFactory.createHttpLoggingInterceptor()
     }
 
     @Provides
-    fun provideMokResponseInterceptor() : MokResponseInterceptors {
+    fun provideMokResponseInterceptor(): MokResponseInterceptors {
         return MokResponseInterceptors()
     }
 
